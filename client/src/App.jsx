@@ -39,13 +39,13 @@ const router = createBrowserRouter([
       {
         path: "/write",
         element: <Write />
-      }, 
+      },
     ]
   },
   {
     path: "/login",
     element: <Login />,
-  }, 
+  },
   {
     path: "/register",
     element: <Register />,
@@ -56,7 +56,9 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        <RouterProvider router={router}/>
+        <RouterProvider
+          router={router}
+        />
       </div>
     </div>
   );
