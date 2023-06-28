@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
   const [posts, setPosts] = useState([])
 
   const fetchUserData = () => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://fakestoreapi.com/products")
       .then(response => {
         return response.json()
       })
@@ -17,16 +18,23 @@ const Home = () => {
   useEffect(() => {
     fetchUserData()
   }, [])
-
+  
   return (
     <div className='home'>
       <div className='posts'>
         {posts.map(post => (
           <>
-            <div className='post' key={post.id}>
-              <span>{post.id}</span>
-              <span>{post.title}</span>
-              <div>{post.body}</div>
+            <div className=  'post' key={post.id}>
+              <div className="img">
+                <img src={post.image} />
+              </div>
+              <div className="contents">
+                <Link className='link' to={`/post/${post.id}`}>
+                  <h1>{post.title}</h1>
+                </Link>
+                <p>{post.description}</p>
+                <button>See more</button>
+              </div>
             </div>
 
           </>

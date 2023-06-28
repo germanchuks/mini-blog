@@ -85,7 +85,7 @@ body {
                 .logo {
                     img {
                         width: 130px;
-                       
+
                     }
                 }
 
@@ -136,8 +136,92 @@ body {
 
             img {
                 height: 60px;
-                
+
             }
         }
+
+        //HOME
+
+        .home {
+
+            .posts {
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                gap: 100px;
+
+                .post {
+                    display: grid;
+                    grid-template-columns: 0.8fr 2fr;
+                    align-items: center;
+                    grid-gap: 50px;
+
+                    &:nth-child(2n+1) {
+                        direction: rtl
+                    }
+
+                    .img {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px;
+                        // border: 2px solid rgb(57, 114, 79);
+                        border-radius: 20px;
+                        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                        //     content: '';
+                        //     width: 80%;
+                        //     height: 100%;
+                        //     background-color: rgb(223, 225, 223);
+                        //     position: absolute;
+                        //     top:20px;
+                        //     left: -20px;
+                        //     z-index: -1;
+                        // }
+
+
+                        img {
+                            width: 90%;
+                            max-height: 400px;
+                            object-fit: contain;
+                        }
+                    }
+
+                    .contents {
+                        display: flex;
+                        flex: 3;
+                        height: 90%;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        direction: ltr;
+
+                        h1 {
+                            font-size: 42px;
+                        }
+
+                        p {
+                            font-size: 18px;
+                            line-height: 30px;
+                        }
+
+                        button {
+                            width: max-content;
+                            padding: 10px 20px;
+                            border: 1px solid white;
+                            cursor: pointer;
+                            background-color: #fff;
+                            border-radius: 10px;
+                            color: teal;
+                            box-shadow: rgba(50, 86, 66, 0.827) 0px 1px 4px;
+                        
+                            &:hover{
+                                border: 1px solid white;
+                                background-color: rgba(155, 245, 148, 0.526);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }
