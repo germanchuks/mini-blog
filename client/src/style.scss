@@ -1,7 +1,8 @@
+*,
 body {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 .app {
@@ -104,7 +105,7 @@ body {
                     }
 
                     .write {
-                        background-color: rgba(177, 252, 173, 0.822);
+                        background-color: rgba(58, 61, 57, 0.822);
                         width: 50px;
                         height: 50px;
                         border-radius: 50%;
@@ -126,13 +127,14 @@ body {
 
         //FOOTER
         footer {
-            margin-top: 100px;
+            margin-top: 80px;
             padding: 20px;
-            background-color: rgba(177, 252, 173, 0.822);
+            background-color: rgba(9, 9, 9, 0.899);
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-size: 12px;
+            color: white;
 
             img {
                 height: 60px;
@@ -188,7 +190,6 @@ body {
 
                     .contents {
                         display: flex;
-                        flex: 3;
                         height: 90%;
                         flex-direction: column;
                         justify-content: space-between;
@@ -196,6 +197,7 @@ body {
 
                         h1 {
                             font-size: 42px;
+                            margin-bottom: 0px;
                         }
 
                         p {
@@ -205,17 +207,18 @@ body {
 
                         button {
                             width: max-content;
-                            padding: 10px 20px;
-                            border: 1px solid white;
+                            padding: 8.5px 20px;
+                            // border: 1px solid white;
                             cursor: pointer;
                             background-color: #fff;
                             border-radius: 10px;
                             color: teal;
-                            box-shadow: rgba(50, 86, 66, 0.827) 0px 1px 4px;
-                        
-                            &:hover{
+                            border: 2px solid rgba(50, 86, 66, 0.827);
+
+                            &:hover {
                                 border: 1px solid white;
-                                background-color: rgba(155, 245, 148, 0.526);
+                                color: white;
+                                background-color: rgba(10, 10, 10, 0.526);
                             }
                         }
                     }
@@ -223,5 +226,215 @@ body {
             }
         }
 
+        //SINGLE
+
+        .single {
+            margin-top: 50px;
+            display: flex;
+            gap: 50px;
+
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                flex: 6;
+
+                img {
+                    width: 100%;
+                    height: 300px;
+                    object-fit: cover;
+                }
+
+                .user {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 14px;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            &:first-child {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                    .edit {
+                        display: flex;
+                        gap: 5px;
+
+                        img {
+                            width: 30px;
+                            height: 30px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                h1 {
+                    font-size: 42px;
+                    color: #333;
+
+                }
+
+                p {
+                    text-align: justify;
+                    line-height: 30px;
+                }
+
+            }
+
+            .menu {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+
+                h1 {
+                    font-size: 23px;
+                    color: #555;
+                    margin-bottom: -30px;
+                    text-align: center;
+                }
+
+                .post {
+                    display: grid;
+                    flex-direction: column;
+                    justify-items: center;
+                    text-align: center;
+                    gap: 10px;
+
+                    img {
+                        width: 100%;
+                        height: 150px;
+                        object-fit: contain;
+                    }
+
+                    button {
+                        width: max-content;
+                        padding: 7.5px 15px;
+                        border: 1px solid rgb(25, 74, 59);
+                        cursor: pointer;
+                        background-color: #fff;
+                        // border-radius: 10px;
+                        color: teal;
+
+                        &:hover {
+                            border: 1px solid white;
+                            background-color: rgba(34, 34, 34, 0.526);
+                        }
+                    }
+                }
+
+            }
+
+
+
+
+        }
+
+        //WRITE
+        .add {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+
+            .content {
+                flex: 5;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                input {
+                    padding: 15px;
+                    border: 1px solid lightgrey;
+                }
+
+                .editorContainer {
+                    height: 300px;
+                    overflow: scroll;
+                    border: 1px solid lightgrey;
+                    // display: flex;
+
+                    .editor {
+                        height: 85%;
+                        border: none;
+                        // flex: 1;
+
+                    }
+                }
+            }
+
+            .menu {
+                flex: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .item {
+                    border: 1px solid lightgrey;
+                    padding: 10px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    font-size: 12px;
+                    color: #555;
+
+                    h1 {
+                        font-size: 20px;
+                    }
+
+                    .file {
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+
+
+                    .buttons {
+                        display: flex;
+                        justify-content: space-between;
+                        
+
+                        :first-child {
+                            cursor: pointer;
+                            color: rgba(46, 71, 36, 0.629);
+                            background-color: white;
+                            border: 1px solid rgba(54, 74, 46, 0.914);
+                            padding: 3px 5px;
+                            font-size: 11px;
+                        }
+
+                        :last-child {
+                            cursor: pointer;
+                            color: rgb(6, 6, 6);
+                            background-color: rgba(186, 240, 173, 0.867);
+                            border: 1px solid rgba(16, 17, 16, 0.629);
+                            padding: 3px 10px;
+                            font-size: 11px;
+                
+                            // font-weight:200;
+                        }
+                    }
+
+                    .cat {
+                        display: flex;
+                        align-items: center;
+                        gap: 3px;
+                        color: rgba(69, 94, 60, 0.968);
+                    }
+                }
+            }
+        }
     }
 }
