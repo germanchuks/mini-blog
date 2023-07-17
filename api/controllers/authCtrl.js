@@ -39,33 +39,33 @@ export const register = (req, res) => {
 
 export const login = (req, res) => {
 
-    //CHECK USER EXIST
-    // const qry = "SELECT * FROM users WHERE username = ?"
+    // CHECK USER EXIST
+    const qry = "SELECT * FROM users WHERE username = ?"
 
-    // db.query(qry, [req.body.username], (err, data) => {
-    //     if (err) return res.json(err)
-    //     if (data.length === 0) return res.status(404).json("User not found")
+    db.query(qry, [req.body.username], (err, data) => {
+        if (err) return res.json(err)
+        if (data.length === 0) return res.status(404).json("User not found")
 
-    //     //Compares password IF user exists
-    //     const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password)
+        //Compares password IF user exists
+        const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password)
 
-    //     if (!isPasswordCorrect) return res.status(404).json("Wrong username or password")
+        if (!isPasswordCorrect) return res.status(404).json("Wrong username or password")
 
-    //     //Create unique id to identify each user and related posts. 
-    //     const userId = { id: data[0].id}
-    //     const userKey = 'jwtkey'    //Generate random key
+        //Create unique id to identify each user and related posts. 
+        const userId = { id: data[0].id}
+        const userKey = 'jwtkey'    //Generate random key
 
-    //     const token = jwt.sign(userId, userKey);
+        const token = jwt.sign(userId, userKey);
 
-    //      //Separate user password from response data
-    //      const {password, ...other} = data[0]
+         //Separate user password from response data
+         const {password, ...other} = data[0]
 
-    //     //Parse token as cookie
-    //     res.cookie("access_token", token, {
-    //         httpOnly: true  //Applications  in script wont reach cookie directly. For api request only.  
-    //     }).status(200).json(other)
+        //Parse token as cookie
+        res.cookie("access_token", token, {
+            httpOnly: true  //Applications  in script wont reach cookie directly. For api request only.  
+        }).status(200).json(other)
 
-    // })
+    })
 
 }
 
