@@ -1,9 +1,14 @@
+import { createRequire } from "module";
 import express from "express"
 import postRoute from "./routes/postRoute.js"
 import authRoute from "./routes/authRoute.js"
 // import userRoute from "./routes/userRoute.js"
-import cookieParser from "cookie-parser";
 import cors from 'cors';
+
+
+const require = createRequire(import.meta.url);
+require('dotenv').config()
+const cookieParser = require('cookie-parser');
 
 
 const app = express();
@@ -12,7 +17,7 @@ const app = express();
 app.use(express.json())
 
 //Allow app to parse tokens as cookie
-// app.use(cookieParser)
+app.use(cookieParser())
 
 //Allow clientside to access API endpoints
 app.use(cors());
@@ -26,6 +31,7 @@ app.use("/api/posts", postRoute)
 
 // //Get auth from api
 app.use("/api/auth", authRoute)
+
 
 app.listen(8000, () => {
     console.log("Connected!")

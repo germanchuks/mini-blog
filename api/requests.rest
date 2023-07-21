@@ -1,0 +1,22 @@
+GET http://localhost:8000/testusers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODk5MjgyMzZ9.jQrBSfnySCTrIh8D6NUkFj6_rOQ8SpFI4wVy-S0b008
+###
+
+POST http://localhost:8000/testusers
+Content-Type: application/json
+
+{
+    "name": "Jimmy",
+    "password": "password3",
+    "title": "post 5"
+}
+
+###
+
+POST http://localhost:8000/testusers/login
+Content-Type: application/json
+
+{
+    "name": "Jimmy",
+    "password": "password3"
+}

@@ -2,9 +2,9 @@ import db from "../db.js";
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+
 export const register = (req, res) => {
     // res.json('Auth from control')
-
     // CHECK EXISTING USER
     const qry = "SELECT * FROM users WHERE email = ?  OR username = ?"
 
@@ -37,8 +37,7 @@ export const register = (req, res) => {
 
 }
 
-export const login = (req, res) => {
-
+export const login = (req, res, next) => {
     // CHECK USER EXIST
     const qry = "SELECT * FROM users WHERE username = ?"
 
@@ -51,23 +50,45 @@ export const login = (req, res) => {
 
         if (!isPasswordCorrect) return res.status(404).json("Wrong username or password")
 
+        //GENERATE JWT TOKEN
+        
         //Create unique id to identify each user and related posts. 
         const userId = { id: data[0].id}
-        const userKey = 'jwtkey'    //Generate random key
+        const userKey = process.env.ACCESS_TOKEN_SECRET    //Generate random key
 
-        const token = jwt.sign(userId, userKey);
+        function generateAccessToken(userId) {
+            return jwt.sign(userId, userKey, {expiresIn: '500s'})
+        }
 
-         //Separate user password from response data
-         const {password, ...other} = data[0]
+        
+        const token = generateAccessToken(userId)
+        // const token = jwt.sign(userId, userKey);
+
+        //Separate user password from response data
+        const { password, ...other } = data[0]
+
+
+        // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+        // res.setHeader('Access-Control-Allow-Credentials', 'true');
+        // res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
         //Parse token as cookie
-        res.cookie("access_token", token, {
-            httpOnly: true  //Applications  in script wont reach cookie directly. For api request only.  
-        }).status(200).json(other)
+        res.cookie('accessToken', token, {maxAge: 900000, httpOnly: true })
+        res.json({...other, token})
+        next();
 
-    })
+    });
 
-}
+};
+
+/////
+
+
+
+
+
+
+/////
 
 export const logout = (req, res) => {
     res.json('Auth logout from control')
