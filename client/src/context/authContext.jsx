@@ -4,6 +4,7 @@ import axios from "axios";
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
+
 	const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null)
 
 	const login = async (inputs) => {
@@ -12,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
 	}
 
 	const logout = async (inputs) => {
-		await axios.post("http://localhost:8000/api/auth/login");
+		await axios.post("http://localhost:8000/api/auth/logout");
 		setCurrentUser(null);
 	}
 

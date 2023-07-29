@@ -7,7 +7,11 @@ import cors from 'cors';
 
 
 const require = createRequire(import.meta.url);
+
+//Allow access to dotenv files
 require('dotenv').config()
+
+//ALlow api to store cookies to browser
 const cookieParser = require('cookie-parser');
 
 
@@ -21,6 +25,15 @@ app.use(cookieParser())
 
 //Allow clientside to access API endpoints
 app.use(cors());
+
+//CORS middleware
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 
 //Get posts from api
 app.use("/api/posts", postRoute)
