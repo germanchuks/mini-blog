@@ -1,6 +1,6 @@
 import { createRequire } from "module";
 import express from "express"
-import postRoute from "./routes/postRoute.js"
+import itemRoute from "./routes/itemRoute.js"
 import authRoute from "./routes/authRoute.js"
 // import userRoute from "./routes/userRoute.js"
 import cors from 'cors';
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 //Get posts from api
-app.use("/api/posts", postRoute)
+app.use("/api/items", itemRoute)
 
 // Get users from api
 // app.use("/api/users", userRoute)

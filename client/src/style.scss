@@ -163,6 +163,7 @@ body {
                     }
 
                     .img {
+                        position: relative;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -185,6 +186,39 @@ body {
                             width: 90%;
                             max-height: 400px;
                             object-fit: contain;
+                        }
+                        
+                        .price{
+                            display: flex;
+                            position: absolute;
+                            background-color: rgb(48, 48, 48);
+                            color: white;
+                            bottom: 15px;
+                            left: 15px;
+                            padding: 5px;
+                            width: 70px;
+                            font-weight: 500;
+                            justify-content: center;
+                        }
+                        
+                        .rating{
+                            display: flex;
+                            position: absolute;
+                            bottom: 15px;
+                            right: 15px;
+                            background-color: rgb(48, 48, 48);
+                            color: white;
+                            padding: 5px;
+                            width: 70px;
+                            justify-content: center;
+                            gap: 3px;
+                            justify-items: center;
+                            font-weight: 500;
+
+                            img{
+                                width: 18px;
+                                height: auto;
+                            }
                         }
                     }
 
